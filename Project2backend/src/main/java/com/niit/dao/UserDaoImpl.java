@@ -39,4 +39,14 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 
+	//dao will get user object from middleware
+	public User login(User user) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("from User where email=? and password=?");
+		query.setString(0, user.getEmail());
+		query.setString(1, user.getPassword());
+		return (User)query.uniqueResult();		
+	}
+
 }

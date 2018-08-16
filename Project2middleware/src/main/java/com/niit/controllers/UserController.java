@@ -18,6 +18,10 @@ public class UserController {
 	@Autowired
 	private UserDao userDao;
 	
+	public UserController() {
+		System.out.println("User Controller Bean is Created");
+	}
+	
 	@RequestMapping(value="/register",method=RequestMethod.POST)
 	public ResponseEntity<?> registration(@RequestBody User user){
 		try {
@@ -32,6 +36,18 @@ public class UserController {
 		}catch(Exception e) {
 			ErrorClazz errorClazz=new ErrorClazz(1,"Something went worng"+ e.getMessage());
 			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@RequestMapping(value="/login",method=RequestMethod.PUT)
+	//middleware get the data from angular js client in JSON fmt
+	//ex/ {'email':'adame@abc.com','password':'qwerst'}
+	public ResponseEntity<?> login(@RequestBody User user){
+		User validUser=userDao.login(user);
+		if(validUser==null) { //Invalid credentials Email/pwd is incorrect
+			return null;
+		}else { // valid credentails, valid email and password
+			return null;
 		}
 	}
 }

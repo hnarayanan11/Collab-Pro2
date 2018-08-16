@@ -1,0 +1,20 @@
+<div class="transbox">
+<span style="color:red">{{error.errorMsg}}</span>
+<form>
+<center>Registration Page</center>
+<table align="center">
+<tr><td>Enter Email</td><td><input type="email" ng-model="user.email" required></td></tr>
+<tr><td>Enter Password</td><td><input type="password" ng-model="user.password" required></td></tr>
+<tr><td>Enter First Name</td><td><input type="text" ng-model="user.firstname" required></td></tr>
+<tr><td>Enter Last Name</td><td><input type="text" ng-model="user.lastname" required></td></tr>
+<tr><td>Enter Phone Number</td><td><input type="text" ng-model="user.phonenumber" required></td></tr>
+<tr><td>Select Role </td>
+<td><select ng-model="user.role">
+<option value="STUDENT">Student
+<option value="EMPlOYEE">Employee
+<option value="ALUMNI">Alumni
+</select></td></tr>
+<tr><td colspan="2" align="center"><button ng-click="registration(user)">Registration</button></td></tr>
+</table>
+</form>
+</div>
