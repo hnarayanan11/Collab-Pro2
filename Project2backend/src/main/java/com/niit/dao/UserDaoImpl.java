@@ -49,4 +49,18 @@ public class UserDaoImpl implements UserDao {
 		return (User)query.uniqueResult();		
 	}
 
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		session.update(user);//update user_s190035 set password=?,fn=?,ln=?pn=?,online_stauts=?,role=? where email=?
+		//, online_status=? where email=?
+	}
+
+	public User getUser(String email) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		User user=(User)session.get(User.class, email);		
+		return user;
+	}
+
 }

@@ -1,1 +1,11 @@
-<b>Login Page</b>
+<div class="transbox">
+<span style="color:red">{{error.errorMsg}}</span>
+<form>
+<center>Registration Page</center>
+<table align="center">
+<tr><td>Enter Email</td><td><input type="email" ng-model="user.email" required></td></tr>
+<tr><td>Enter Password</td><td><input type="password" ng-model="user.password" required></td></tr>
+<td colspan="2" align="center"><button ng-click="login(user)">Let Me In</button></td></tr>
+</table>
+</form>
+</div>

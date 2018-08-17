@@ -1,5 +1,7 @@
 package com.niit.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,15 +41,54 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping(value="/login",method=RequestMethod.PUT)
 	//middleware get the data from angular js client in JSON fmt
 	//ex/ {'email':'adame@abc.com','password':'qwerst'}
-	public ResponseEntity<?> login(@RequestBody User user){
+	@RequestMapping(value="/login",method=RequestMethod.PUT)
+	public ResponseEntity<?> login(@RequestBody User user, HttpSession session){
+		System.out.println("Entered login");
 		User validUser=userDao.login(user);
 		if(validUser==null) { //Invalid credentials Email/pwd is incorrect
-			return null;
+			System.out.println("login email or password is invalid");
+			ErrorClazz errorClazz=new ErrorClazz(4,"Invalid email/password....");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);			
 		}else { // valid credentails, valid email and password
-			return null;
+			System.out.println("login success");
+			validUser.setOnline(true);
+			userDao.updateUser(validUser);
+			session.setAttribute("loggedInuser", validUser.getEmail());
+			System.out.println("Session Attribute"+session.getAttribute("loggedInUser"));
+			System.out.println("Session Id" + session.getId());
+			System.out.println("Created On"+ session.getCreationTime());
+			return new ResponseEntity<User>(validUser,HttpStatus.OK);
 		}
+	}
+	
+	@RequestMapping(value="/getalljobs",method=RequestMethod.GET)
+	public ResponseEntity<?> getAllJobs(HttpSession session){
+		System.out.println("Session Attribute"+session.getAttribute("loggedInUser"));
+		System.out.println("Session Id" + session.getId());
+		System.out.println("Created On"+ session.getCreationTime());
+		String email= (String) session.getAttribute("loggedInUser");
+		if(email == null) {
+			ErrorClazz errorClazz=new ErrorClazz(4,"email is null");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}			
+		
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/logout",method=RequestMethod.PUT)
+	public ResponseEntity<?> logout(HttpSession session){
+		String email=(String) session.getAttribute("loggedInUser");
+		if(email==null) {
+			ErrorClazz errorClazz=new ErrorClazz(4,"email is null");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		User user=userDao.getUser(email);
+		user.setOnline(false);
+		userDao.updateUser(user);
+		session.removeAttribute("loggedInUser");
+		session.invalidate();
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 }

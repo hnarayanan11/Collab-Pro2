@@ -13,4 +13,22 @@ app.controller('UserCtrl', function($scope, UserService, $location) {
 					$scope.error=response.data //ErrorCalzz object
 				})
 	}
+	
+	$scope.login=function(user){
+		UserService.login(user).then(function(response){
+			alert("Login Success")
+			console.log("login success ",$scope.user)
+			$location.path('/home')
+		},function(response){
+			alert("Login Error")
+			console.log("login error");
+			$scope.error=response.data			
+		})
+	}
+	
+	/*UserService.getAllJobs().then(function(response){
+		
+	},function(response){
+		$location.path('/login')
+	})*/
 })
