@@ -19,5 +19,10 @@ app.factory('UserService',function($http){
 		var url=BASE_URL +"/getalljobs"
 		return $http.get(url)
 	}*/
+	
+	userService.logout=function(){
+		var url=BASE_URL +"/logout";
+		return $http.put(url)
+	}
 	return userService;
 })

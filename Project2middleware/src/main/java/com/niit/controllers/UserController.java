@@ -55,7 +55,7 @@ public class UserController {
 			System.out.println("login success");
 			validUser.setOnline(true);
 			userDao.updateUser(validUser);
-			session.setAttribute("loggedInuser", validUser.getEmail());
+			session.setAttribute("loggedInUser", validUser.getEmail());
 			System.out.println("Session Attribute"+session.getAttribute("loggedInUser"));
 			System.out.println("Session Id" + session.getId());
 			System.out.println("Created On"+ session.getCreationTime());
@@ -80,8 +80,9 @@ public class UserController {
 	@RequestMapping(value="/logout",method=RequestMethod.PUT)
 	public ResponseEntity<?> logout(HttpSession session){
 		String email=(String) session.getAttribute("loggedInUser");
+		System.out.println("logout method "+email +" email for logged in user" );
 		if(email==null) {
-			ErrorClazz errorClazz=new ErrorClazz(4,"email is null");
+			ErrorClazz errorClazz=new ErrorClazz(4,"Uauthorized access.. please login.....");
 			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
 		}
 		User user=userDao.getUser(email);

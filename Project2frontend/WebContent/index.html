@@ -6,10 +6,17 @@
 <meta charset="ISO-8859-1">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="resources/template/css/style.css" rel='stylesheet'
+	type='text/css' />
+<script src="resources/template/js/jquery-2.2.3.min.js"></script>
+<!-- script for validation -->
+<script src="resources/template/js/jquery.formValid.js"></script>
+<link
+	href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700"
+	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet"
-	href="resources/css/regisform.css">
+<link rel="stylesheet" href="resources/css/regisform.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
@@ -18,28 +25,37 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
-	<script src="js/app.js"></script>
-	<script src="controllers/usercontroller.js"></script>
-	<script src="services/userservice.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+<script src="js/app.js"></script>
+<script src="controllers/usercontroller.js"></script>
+<script src="services/userservice.js"></script>
 </head>
-<body ng-app="app" style="background:#e6ffff">
+<body ng-app="app">
 	<div class="container">
 		<!-- <a href="#/registration">Registration</a> -->
-<nav class="navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#/home">NIIT</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="#/home">Home</a></li>      
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#/registration"><span class="glyphicon glyphicon-user"></span> Registration</a></li>
-      <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <!-- <li><a href="#/getallljobs"><span class="glyphicon glyphicon-log-in"></span> Get All Jos</a></li> -->
-    </ul>
-  </div>
-</nav>
+		<nav class="navbar">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#/home">NIIT</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="#/home">Home</a></li>
+					<li ng-show="user.email!=undefined"><a href="#">Welcome
+							{{user.firstname}} &nbsp; {{user.lastname}}</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li ng-show="user.email==undefined"><a href="#/registration"><span
+							class="glyphicon glyphicon-user"></span> Registration</a></li>
+					<li ng-show="user.email==undefined"><a href="#/login"><span
+							class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+					<li ng-show="user.email!=undefined"><a href=""
+						ng-click="logout()"><span class="glyphicon glyphicon-log-in"></span>
+							Sign out</a></li>
+					<!-- <li><a href="#/getallljobs"><span class="glyphicon glyphicon-log-in"></span> Get All Jos</a></li> -->
+				</ul>
+			</div>
+		</nav>
 		<div ng-view></div>
 	</div>
 </body>

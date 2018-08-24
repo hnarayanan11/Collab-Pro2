@@ -1,7 +1,7 @@
 /**
  * UserCtrl
  */
-app.controller('UserCtrl', function($scope, UserService, $location) {
+app.controller('UserCtrl', function($scope, UserService, $location, $rootScope, $cookieStore) {
 	// function for registration
 	$scope.registration = function(user) {
 		UserService.registration(user).then(				
@@ -17,6 +17,8 @@ app.controller('UserCtrl', function($scope, UserService, $location) {
 	$scope.login=function(user){
 		UserService.login(user).then(function(response){
 			alert("Login Success")
+			$cookieStore.put('userDetails',response.data)
+			$rootScope.user=response.data //User Object
 			console.log("login success ",$scope.user)
 			$location.path('/home')
 		},function(response){
