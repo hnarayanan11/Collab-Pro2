@@ -1,0 +1,62 @@
+<header>
+			<h1 class="text-center">Registration Page</h1>
+		</header>
+		<!-- //header -->
+		<!-- form section -->
+		<section class="w3ls-reg">
+			<form>
+			<span style="color:red">{{error.errorMsg}}</span>
+				<div class="row">
+					<div class="agile_full field">
+						<label for="labelEmail">E-mail <span>*</span></label>
+						<input type="text" id="labelEmail" ng-model="user.email" class="form-control" data-field="email" required disabled>
+						<div class="valid-message"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="agile_full field">
+						<label for="labelPassword">Password <span>*</span></label>
+						<input type="password" id="labelPassword" ng-model="user.password" class="form-control" data-field="password">
+						<div class="valid-message"></div>
+					</div>
+				</div>				
+				<div class="row">
+					<div class="agile_full field">
+						<label for="labelName">First Name <span>*</span></label>
+						<input type="text" id="labelName" ng-model="user.firstname" class="form-control" data-field="name">
+						<div class="valid-message"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="agile_full field">
+						<label for="labelSurname">Last Name <span>*</span></label>
+						<input type="text" id="labelSurname" ng-model="user.lastname" class="form-control" data-field="surname">
+						<div class="valid-message"></div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="agile_full field">
+						<label for="labelPhone">Phone number <span>*</span></label>
+						<input type="text" id="labelPhone" ng-model="user.phonenumber" class="form-control" data-field="phone">
+						<div class="valid-message"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="agile_full field">
+						<label for="labelPhone">Role<span>*</span></label>
+						<select class="form-control" ng-model="user.role" data-field="phone">
+							<option value="STUDENT">Student</option>
+							<option value="EMPLOYEE">Employee</option>
+							<option value="ALUMINI">Alumini</option>
+						</select>
+						<div class="valid-message"></div>
+					</div>
+				</div>				
+				<div class="row">
+					<div class="agile_full field">
+						<button ng-click="updateProfile(user)" style="font-color:white">Edit Profile</button>
+					</div>
+				</div>
+			</form>
+		</section>

@@ -7,6 +7,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
+
+<meta charset="UTF-8">
 <title>Collaboration</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -32,22 +34,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="services/userservice.js"></script>
 	<!--/metadata -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8">
-<meta name="keywords" content="Best Look Responsive web templates, Bootstrap Web templatess, Flat Web templatess, Android Compatible web templates, 
-Smart phone Compatible web templates, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //custom-theme -->
-<link href="resources/templates/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="resources/templates/css/JiSlider.css" rel="stylesheet"> 
 <link href="resources/templates/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="resources/templates/css/bootstrap.css" rel="stylesheet" type="text/css"  media="all"/>
 <!-- font-awesome-icons -->
 <link href="resources/templates/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome-icons -->
 <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body ng-app="app">
 <!-- header -->
 <div class="banner-top" id="home">
 	<div class="header">
@@ -84,13 +84,12 @@ Smart phone Compatible web templates, free webdesigns for Nokia, Samsung, LG, So
 						<!--  show sign in and registration only if user is note logged in -->
 				<!--  hide sign in and registrationn  -->
 				<!-- show the 'Welcome' only if user is not logged in -->
-				<!--  hide the 'welcome' if the user is not logged in -->
-				
-					<li><a href="#/home">Home</a></li>
+				<!--  hide the 'welcome' if the user is not logged in -->			
+					
 					<li ng-show="user.email!=undefined"><a href="#">Welcome {{user.firstname}} &nbsp;
 							{{user.lastname}}</a></li>
 				
-							<li class="menu__item menu__item--current"><a href="#/home">Home</a></li>
+							<li class="menu__item"><a href="#/home" class="menu_link">Home</a></li>
 							<li class="menu__item"><a href="#/about" class="menu__link">About</a></li>							
 							<li class="dropdown menu__item">
 								<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown">Short codes<b class="caret"></b></a>
@@ -103,9 +102,9 @@ Smart phone Compatible web templates, free webdesigns for Nokia, Samsung, LG, So
 									
 								</ul>
 							</li>
-							<li ng-show="user.email!=undefined" class="menu__item"><a href="#/registration" class="menu__link"><span class="glyphicon glyphicon-user"></span>Registration </a></li>
-							<li ng-show="user.email!=undefined" class="menu__item"><a href="#/login" class="menu__link"><span class="glyphicon glyphicon-log-in"></span>Sign in </a></li>
-							<li ng-show="user.email==undefined" class="menu__item"><a href="" ng-click="logout()" class="menu__link"><span class="glyphicon glyphicon-log-out"></span>Sign out </a></li>
+							<li ng-show="user.email==undefined" class="menu__item"><a href="#/registration" class="menu__link"><span class="glyphicon glyphicon-user"></span>Registration </a></li>
+							<li ng-show="user.email==undefined" class="menu__item"><a href="#/login" class="menu__link"><span class="glyphicon glyphicon-log-in"></span>Sign in </a></li>
+							<li ng-show="user.email!=undefined" class="menu__item"><a href="" ng-click="logout()" class="menu__link"><span class="glyphicon glyphicon-log-out"></span>Sign out </a></li>
 						</ul>
 					</nav>
 				</div>
@@ -114,308 +113,27 @@ Smart phone Compatible web templates, free webdesigns for Nokia, Samsung, LG, So
 		</div>
 	</div>
 <!-- //header -->
+<div ng-view></div>
 <!-- banner -->
-	<div class="banner-silder">
-		<div id="JiSlider" class="jislider">
-			<ul>
-				<li>
-					<div class="w3layouts-banner-top">
-
-							<div class="container">
-								<div class="agileits-banner-info">
-								
-									<h3>WE ARE PROFESSIONAL DESIGNERS </h3>
-									 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed blandit massa vel mauris sollicitudin dignissim.</p>
-									
-								</div>	
-							</div>
-						</div>
-				</li>
-				<li>
-						<div class="w3layouts-banner-top w3layouts-banner-top1">
-						<div class="container">
-								<div class="agileits-banner-info">
-								 
-									<h3>WE ARE EXPERIENCED  DESIGNERS</h3>
-									 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed blandit massa vel mauris sollicitudin dignissim.</p>
-									
-								</div>	
-							</div>
-						</div>
-				</li>
-				<li>
-						<div class="w3layouts-banner-top w3layouts-banner-top2">
-							<div class="container">
-								<div class="agileits-banner-info">
-								    
-									<h3>WE ARE QUALITY  DESIGNERS</h3>
-									 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed blandit massa vel mauris sollicitudin dignissim.</p>
-									
-								</div>
-								
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="w3layouts-banner-top w3layouts-banner-top3">
-							<div class="container">
-								<div class="agileits-banner-info">
-								 
-									<h3>WE ARE FRIENDLY  DESIGNERS</h3>
-									 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed blandit massa vel mauris sollicitudin dignissim.</p>
-									
-								</div>
-								
-							</div>
-						</div>
-					</li>
-			</ul>
-		</div>
-      </div>
-</div>
+	
 <!-- //banner -->
 <!-- about -->
-<div class="about" id="about">
-	<div class="container">
-	<div class="w3-heading-all">
-		<h3>About</h3>
-	
-	</div>
-		<div class="about-grids">
-		<div class="col-md-6 about-left">
-			<img src="images/ab1.jpg" alt="" />
-		</div>
-		<div class="col-md-6 about-right">
-			<h3>Proin feugiat, lorem ut consequat pellentesque, dolor est consequat lorem, eu condimentum tortor justo id lectus.</h3>
-			<p>Phasellus lorem enim, aliquet vitae pharetra a, vehicula sed risus. Suspendisse rhoncus, ligula ut bibendum imperdiet, nibh lectus gravida lorem, at tristique eros turpis in tortor.</p>
-			<p>Phasellus lorem enim, aliquet vitae pharetra a, vehicula sed risus. Suspendisse rhoncus, ligula ut bibendum imperdiet, nibh lectus gravida lorem, at tristique eros turpis in tortor.</p>
-			<div class="more">
-				<a href="#" data-toggle="modal" data-target="#myModal">Read More</a>
-			</div>
-		</div>
-		<div class="clearfix"></div>
-		</div>
-		</div>
-		</div>
-<!-- modal -->
-	<div class="modal about-modal fade" id="myModal" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header"> 
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="span1" aria-hidden="true">&times;</span></button>						
-						<h4 class="modal-title"> Best Look</h4>
-					</div> 
-					<div class="modal-body">
-					<div class="agileits-w3layouts-info">
-						<img src="images/ab1.jpg" alt="" />
-						<p>Duis venenatis, turpis eu bibendum porttitor, sapien quam ultricies tellus, ac rhoncus risus odio eget nunc. Pellentesque ac fermentum diam. Integer eu facilisis nunc, a iaculis felis. Pellentesque pellentesque tempor enim, in dapibus turpis porttitor quis. Suspendisse ultrices hendrerit massa. Nam id metus id tellus ultrices ullamcorper.  Cras tempor massa luctus, varius lacus sit amet, blandit lorem. Duis auctor in tortor sed tristique. Proin sed finibus sem.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- modal -->	
 <!-- //modal -->
-
 <!-- //about -->
 <!-- services -->
 	<div class="services" id="services">
 	<div class="w3-heading-all">
-				<h3>services</h3>
-				</div>
-		<!-- container -->
-		<div class="w3-services-grids">
-			<div class="col-md-6 w3-services-grid-left">
-			</div>
-			<div class="col-md-6 w3-services-grid-right">
-				<div class=" w3-services-grid-info">
-				<div class="col-md-2 w3-services-grid-left1">
-				<i class="fa fa-yoast" aria-hidden="true"></i>
-				
-				</div>
-				<div class="col-md-10 w3-services-grid-right1">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus commodo.</p>
-				</div>
-				<div class="clearfix"></div>
-				</div>
-				
-				<div class=" w3-services-grid-info">
-				<div class="col-md-2 w3-services-grid-left1">
-				<i class="fa fa-gitlab" aria-hidden="true"></i>
-				
-				
-				</div>
-				<div class="col-md-10 w3-services-grid-right1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus commodo.</p>
-				</div>
-				<div class="clearfix"></div>
-				</div>
-				<div class=" w3-services-grid-info">
-				<div class="col-md-2 w3-services-grid-left1">
-				<i class="fa fa-sitemap" aria-hidden="true"></i>
-				</div>
-				<div class="col-md-10 w3-services-grid-right1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus commodo.</p>
-				</div>
-				<div class="clearfix"></div>
-				</div>
-				<div class=" w3-services-grid-info">
-				<div class="col-md-2 w3-services-grid-left1">
-				<i class="fa fa-hourglass-half" aria-hidden="true"></i>
-				</div>
-				<div class="col-md-10 w3-services-grid-right1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus commodo.</p>
-				</div>
-				<div class="clearfix"></div>
-				</div>
-				
-			<div class="clearfix"></div>
-		</div>		
-			
-		</div>
-		<!-- //container -->
+</div>
+<!-- container -->		
+<!-- //container -->
 </div>
 	<!-- //services -->
 <!--/blog-->
-	<div class="blog_sec">
-		<div class="w3-heading-all">
-				<h3>Latest Designs</h3>
-				</div>
-		<div class="col-md-6 banner-btm-left">
-			<div class="banner-btm-top">
-				<div class="banner-btm-inner a1">
-					<div class="blog_date">
-
-						<h4>Jan.05.2018</h4>
-
-					</div>
-					<h6><a href="#" data-toggle="modal" data-target="#myModal1">Strategic Planning</a></h6>
-					<p class="paragraph">Aenean orci erat, placerat id pulvinar nec, tincidunt vel eros.</p>
-					<div class="clearfix"></div>
-					<a href="#" class="blog-btn" data-toggle="modal" data-target="#myModal1" >Know More</a>
-				</div>
-				<div class="banner-btm-inner a2">
-
-				</div>
-			</div>
-			<div class="banner-btm-bottom">
-				<div class="banner-btm-inner a3">
-
-				</div>
-				<div class="banner-btm-inner a4">
-					<div class="blog_date">
-
-						<h4>Jan.08.2018</h4>
-
-					</div>
-					<h6><a href="#" data-toggle="modal" data-target="#myModal2">Trending Designs</a></h6>
-					<p class="paragraph">Aenean orci erat, placerat id pulvinar nec, tincidunt vel eros.</p>
-					<div class="clearfix"></div>
-					<a href="#" class="blog-btn" data-toggle="modal" data-target="#myModal2">Know More</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-6 banner-btm-left">
-			<div class="banner-btm-top">
-				<div class="banner-btm-inner a1">
-					<div class="blog_date">
-
-						<h4>Jan.25.2018</h4>
-
-					</div>
-					<h6><a href="#" data-toggle="modal" data-target="#myModal3">Trending Designs</a></h6>
-					<p class="paragraph">Aenean orci erat, placerat id pulvinar nec, tincidunt vel eros.</p>
-					<div class="clearfix"></div>
-					<a href="#" class="blog-btn" data-toggle="modal" data-target="#myModal3">Know More</a>
-				</div>
-				<div class="banner-btm-inner a5">
-
-				</div>
-			</div>
-			<div class="banner-btm-bottom">
-				<div class="banner-btm-inner a6">
-
-				</div>
-				<div class="banner-btm-inner a4">
-					<div class="blog_date">
-
-						<h4>Jan.05.2018</h4>
-
-					</div>
-					<h6><a href="#" data-toggle="modal" data-target="#myModal4">Trending Designs</a></h6>
-					<p class="paragraph">Aenean orci erat, placerat id pulvinar nec, tincidunt vel eros.</p>
-					<div class="clearfix"></div>
-					<a href="#" class="blog-btn" data-toggle="modal" data-target="#myModal4">Know More</a>
-				</div>
-			</div>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-
-	<!--//blog-->
-
+<!--//blog-->
 <!-- testimonials -->
-	<div class="testimonials" id="testimonials">
-		<div class="container">
-			<div class="w3_agile_team_grid">
-				
-				<div class="w3-heading-all">
-					<h3>What Our <span>Clients</span> Says</h3>
-					
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="w3ls_testimonials_grids">
-				 <section class="center slider">
-						<div class="agileits_testimonial_grid">
-							<div class="w3l_testimonial_grid">
-								<p>In eu auctor felis, id eleifend dolor. Integer bibendum dictum erat, 
-									non laoreet dolor.</p>
-								<h4>Rosy Crisp</h4>
-								<h5>Student</h5>
-								<div class="w3l_testimonial_grid_pos">
-									<img src="images/t1.jpg" alt=" " class="img-responsive" />
-								</div>
-							</div>
-						</div>
-						<div class="agileits_testimonial_grid">
-							<div class="w3l_testimonial_grid">
-								<p>In eu auctor felis, id eleifend dolor. Integer bibendum dictum erat, 
-									non laoreet dolor.</p>
-								<h4>Laura Paul</h4>
-								<h5>Student</h5>
-								<div class="w3l_testimonial_grid_pos">
-									<img src="images/t2.jpg" alt=" " class="img-responsive" />
-								</div>
-							</div>
-						</div>
-						<div class="agileits_testimonial_grid">
-							<div class="w3l_testimonial_grid">
-								<p>In eu auctor felis, id eleifend dolor. Integer bibendum dictum erat, 
-									non laoreet dolor.</p>
-								<h4>Michael Doe</h4>
-								<h5>Student</h5>
-								<div class="w3l_testimonial_grid_pos">
-									<img src="images/t3.jpg" alt=" " class="img-responsive" />
-								</div>
-							</div>
-						</div>
-				</section>
-			</div>
-		</div>
-	</div>
 <!-- //testimonials -->
 <!-- subscribe -->
-<div class="subscribe">
-	<div class="container">
-		<h3 class="heading">Subscribe to get notifications</h3>
-		<div class="subscribe-grid">
-			<form action="#" method="post">
-				<input type="email" placeholder="Enter Your Email" name="email" required="">
-				<button class="btn1"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-			</form>
-		</div>
-	</div>
-</div>
 <!-- //subscribe -->
 
 <!-- footer -->
@@ -424,12 +142,12 @@ Smart phone Compatible web templates, free webdesigns for Nokia, Samsung, LG, So
 				<div class="w3ls_footer_grid">
 					<div class="col-md-4 w3ls_footer_grid_left">
 							<h4>Location:</h4>
-							<p>25095 Blue Ravine Rd, <br> New York, USA</p>
+							<p>NIIT T.Nagar, <br> Tamil Nadu, INDIA</p>
 					</div>
 					<div class="col-md-4 w3ls_footer_grid_left">
 							<h4>Contact us:</h4>
-							<p><span>Phone : </span>505-222-5432</p>
-							<p><span>Email : </span><a href="mailto:info@example.com">info@example.com</a></p>
+							<p><span>Phone : </span>044-445-06309</p>
+							<p><span>Email : </span><a href="mailto:info@example.com">ananthee.cse@gmail.com</a></p>
 					</div>
 					<div class="col-md-4 w3ls_footer_grid_left">
 							<h4>Events Hours:</h4>
@@ -458,15 +176,13 @@ Smart phone Compatible web templates, free webdesigns for Nokia, Samsung, LG, So
 <div class="footer-bot wow fadeInRight animated" data-wow-delay=".5s">
 	<div class="container">
 			<div class="logo2">
-				<h3><a href="index.html">Best Look</a></h3>
+				<h3><a href="#/home">NIIT</a></h3>
 			</div>
 			<div class="ftr-menu">
 				 <ul>
-					<li><a href="index.html">Home </a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a  href="gallery.html">Gallery</a></li>
-					<li><a  href="about.html">Team</a></li>
-					<li><a  href="contact.html">Contact</a></li>
+					<li><a href="#/home">Home </a></li>
+					<li><a href="#/about">About</a></li>			
+					<li><a  href="#/contact">Contact</a></li>
 				 </ul>
 			</div>
 			<div class="clearfix"></div>
@@ -474,82 +190,11 @@ Smart phone Compatible web templates, free webdesigns for Nokia, Samsung, LG, So
 </div>
 <div class="copy-right wow fadeInLeft animated" data-wow-delay=".5s">
 	<div class="container">
-			<p> &copy; 2018 Best Look . All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
+			<p> &copy; 2018 NIIT . All Rights Reserved | Design by  <a target="_blank" href="https://www.justdial.com/Chennai/NIIT-Ltd-Opposite-Bus-Depot-T-Nagar/044P6003360_BZDET">NIIT</a></p><!-- http://www.niitcloudcampus.com/ -->
 	</div>
 </div>
 <!-- //footer -->
-
-	<!-- modal -->
-	<div class="modal about-modal fade" id="myModal1" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header"> 
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="span1" aria-hidden="true">&times;</span></button>						
-						<h4 class="modal-title"> Best Look</h4>
-					</div> 
-					<div class="modal-body">
-					<div class="agileits-w3layouts-info">
-						<img src="images/b1.jpg" alt="" />
-						<p>Duis venenatis, turpis eu bibendum porttitor, sapien quam ultricies tellus, ac rhoncus risus odio eget nunc. Pellentesque ac fermentum diam. Integer eu facilisis nunc, a iaculis felis. Pellentesque pellentesque tempor enim, in dapibus turpis porttitor quis. Suspendisse ultrices hendrerit massa. Nam id metus id tellus ultrices ullamcorper.  Cras tempor massa luctus, varius lacus sit amet, blandit lorem. Duis auctor in tortor sed tristique. Proin sed finibus sem.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- //modal -->
 <!-- modal -->
-	<div class="modal about-modal fade" id="myModal2" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header"> 
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="span1" aria-hidden="true">&times;</span></button>						
-						<h4 class="modal-title"> Best Look</h4>
-					</div> 
-					<div class="modal-body">
-					<div class="agileits-w3layouts-info">
-						<img src="images/b2.jpg" alt="" />
-						<p>Duis venenatis, turpis eu bibendum porttitor, sapien quam ultricies tellus, ac rhoncus risus odio eget nunc. Pellentesque ac fermentum diam. Integer eu facilisis nunc, a iaculis felis. Pellentesque pellentesque tempor enim, in dapibus turpis porttitor quis. Suspendisse ultrices hendrerit massa. Nam id metus id tellus ultrices ullamcorper.  Cras tempor massa luctus, varius lacus sit amet, blandit lorem. Duis auctor in tortor sed tristique. Proin sed finibus sem.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- //modal -->
-<!-- modal -->
-	<div class="modal about-modal fade" id="myModal3" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header"> 
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="span1" aria-hidden="true">&times;</span></button>						
-						<h4 class="modal-title"> Best Look</h4>
-					</div> 
-					<div class="modal-body">
-					<div class="agileits-w3layouts-info">
-						<img src="images/b3.jpg" alt="" />
-						<p>Duis venenatis, turpis eu bibendum porttitor, sapien quam ultricies tellus, ac rhoncus risus odio eget nunc. Pellentesque ac fermentum diam. Integer eu facilisis nunc, a iaculis felis. Pellentesque pellentesque tempor enim, in dapibus turpis porttitor quis. Suspendisse ultrices hendrerit massa. Nam id metus id tellus ultrices ullamcorper.  Cras tempor massa luctus, varius lacus sit amet, blandit lorem. Duis auctor in tortor sed tristique. Proin sed finibus sem.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- //modal -->
-<!-- modal -->
-	<div class="modal about-modal fade" id="myModal4" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header"> 
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="span1" aria-hidden="true">&times;</span></button>						
-						<h4 class="modal-title"> Best Look</h4>
-					</div> 
-					<div class="modal-body">
-					<div class="agileits-w3layouts-info">
-						<img src="images/b4.jpg" alt="" />
-						<p>Duis venenatis, turpis eu bibendum porttitor, sapien quam ultricies tellus, ac rhoncus risus odio eget nunc. Pellentesque ac fermentum diam. Integer eu facilisis nunc, a iaculis felis. Pellentesque pellentesque tempor enim, in dapibus turpis porttitor quis. Suspendisse ultrices hendrerit massa. Nam id metus id tellus ultrices ullamcorper.  Cras tempor massa luctus, varius lacus sit amet, blandit lorem. Duis auctor in tortor sed tristique. Proin sed finibus sem.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 <!-- //modal -->
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
@@ -628,9 +273,7 @@ Smart phone Compatible web templates, free webdesigns for Nokia, Samsung, LG, So
 	</script>
 <!-- //here ends scrolling icon -->
 
-<script type="text/javascript" src="resources/templates/js/bootstrap.js"></script> <!-- Necessary-JavaScript-File-For-Bootstrap --> 
-
-	
+<script type="text/javascript" src="resources/templates/js/bootstrap.js"></script> <!-- Necessary-JavaScript-File-For-Bootstrap -->	
 
 </body>
 </html>

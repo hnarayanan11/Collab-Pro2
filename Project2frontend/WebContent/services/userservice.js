@@ -24,5 +24,10 @@ app.factory('UserService',function($http){
 		var url=BASE_URL +"/logout";
 		return $http.put(url)
 	}
+	
+	userService.updateProfile=function(user){
+		var url=BASE_URL + "/updateprofile"
+		return $http.put(url,user)
+	}
 	return userService;
 })

@@ -28,6 +28,20 @@ app.controller('UserCtrl', function($scope, UserService, $location, $rootScope, 
 		})
 	}
 	
+	$scope.updateProfile=function(user){
+		UserService.updateProfile(user).then(function(response){
+			$rootScope.user=response.data
+			$cookieStore.put('userDetails',response.data)
+			alert('Updated user profile successfully...')
+			console.log(response.data);
+			$location.path('/home')
+		},function(response){
+			if(response.status==401)
+				$location.path('/login')
+			$scope.error=response.data
+		})
+	}
+	
 	/*UserService.getAllJobs().then(function(response){
 		
 	},function(response){
