@@ -30,6 +30,8 @@
 <script src="js/app.js"></script>
 <script src="controllers/usercontroller.js"></script>
 <script src="services/userservice.js"></script>
+<script src="services/jobservice.js"></script>
+<script src="controllers/jobcontroller.js"></script>
 </head>
 <body ng-app="app">
 	<div class="container">
@@ -43,6 +45,15 @@
 					<li><a href="#/home">Home</a></li>
 					<li ng-show="user.email!=undefined"><a href="#/updateprofile">Welcome
 							{{user.firstname}} &nbsp; {{user.lastname}}</a></li>
+
+					<li ng-show="user.email!=undefined" class="dropdown"><a
+						class="dropdown-toggle" data-toggle="dropdown" href="#"
+						style="list-style: none;">Job <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li ng-show="user.role=='ADMIN'"><a href="#/addjob">Add
+									Job</a></li>
+							<li><a href="#/getalljobs">View All Jobs</a></li>
+						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li ng-show="user.email==undefined"><a href="#/registration"><span

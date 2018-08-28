@@ -63,7 +63,7 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping(value="/getalljobs",method=RequestMethod.GET)
+	/*@RequestMapping(value="/getalljobs",method=RequestMethod.GET)
 	public ResponseEntity<?> getAllJobs(HttpSession session){
 		System.out.println("Session Attribute"+session.getAttribute("loggedInUser"));
 		System.out.println("Session Id" + session.getId());
@@ -75,7 +75,7 @@ public class UserController {
 		}			
 		
 		return new ResponseEntity<Void>(HttpStatus.OK);
-	}
+	}*/
 	
 	@RequestMapping(value="/logout",method=RequestMethod.PUT)
 	public ResponseEntity<?> logout(HttpSession session){
