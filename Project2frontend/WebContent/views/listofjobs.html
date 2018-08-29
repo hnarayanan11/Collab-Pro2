@@ -6,9 +6,9 @@
 			<div class="panel-body">
 				<ul style="list-style: none">
 					<li ng-repeat="job in jobs">
-						<a href="" ng-click="showJobDetails()">{{job.jobTitle}}</a><br>
+						<a href="" ng-click="showJobDetails(job.id)">{{job.jobTitle}}</a><br>
 						<b>Posted On:</b> {{job.postedOn | date:'yyyy:MM-dd'}}<br>
-						<div ng-show="showJob">
+						<div ng-show="showJob && id==job.id">
 							<b>Job Description:</b>{{job.jobDescription}}<br>
 							<b>Salary:</b>{{job.salary}}<br>
 							<b>Location:</b>{{job.location}}<br>

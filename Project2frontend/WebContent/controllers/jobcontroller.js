@@ -24,7 +24,8 @@ app.controller('JobCtrl',function($scope,JobService,$location){
 			$location.path('/login')		
 	})
 	
-	$scope.showJobDetails=function(){
+	$scope.showJobDetails=function(id){
+		$scope.id=id //job id
 		$scope.showJob= !$scope.showJob/*!$scope.showJob*/
 	}
 })

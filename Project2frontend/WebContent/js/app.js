@@ -12,6 +12,7 @@ app.config(function($routeProvider){
 	.when('/updateprofile',{controller:'UserCtrl',templateUrl:'views/updateprofile.html'})
 	.when('/addjob',{controller:'JobCtrl',templateUrl:'views/jobform.html'})
 	.when('/getalljobs',{controller:'JobCtrl',templateUrl:'views/listofjobs.html'})
+	.when('/addblogpost',{controller:'BlogPostCtrl',templateUrl:'views/blogform.html'})
 	.otherwise({templateUrl:'views/home.html'})
 })
 // Angular module gets instantiated, app.run() will get executed

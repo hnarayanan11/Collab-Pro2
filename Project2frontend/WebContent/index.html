@@ -32,6 +32,8 @@
 <script src="services/userservice.js"></script>
 <script src="services/jobservice.js"></script>
 <script src="controllers/jobcontroller.js"></script>
+<script src="services/blogpostservice.js"></script>
+<script src="controllers/blogpostcontroller.js"></script>
 </head>
 <body ng-app="app">
 	<div class="container">
@@ -53,6 +55,13 @@
 							<li ng-show="user.role=='ADMIN'"><a href="#/addjob">Add
 									Job</a></li>
 							<li><a href="#/getalljobs">View All Jobs</a></li>
+						</ul></li>
+						<li ng-show="user.email!=undefined" class="dropdown"><a
+						class="dropdown-toggle" data-toggle="dropdown" href="#"
+						style="list-style: none;">BlogPost <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/addblogpost">Add
+									Blog</a></li>							
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
