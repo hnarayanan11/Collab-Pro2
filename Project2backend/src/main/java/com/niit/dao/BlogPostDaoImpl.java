@@ -1,5 +1,8 @@
 package com.niit.dao;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,13 @@ private SessionFactory sessionFactory;
 		Session session=sessionFactory.getCurrentSession();
 		session.save(blogPost);
 
+	}
+	public List<BlogPost> getApprovedBlogs() {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("from BlogPost where approvalStatus=true");
+		List<BlogPost> blogPosts=query.list();
+		return blogPosts;
 	}
 
 }

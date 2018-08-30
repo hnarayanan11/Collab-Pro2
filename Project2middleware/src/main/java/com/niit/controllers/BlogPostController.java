@@ -1,6 +1,7 @@
 package com.niit.controllers;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -31,7 +32,6 @@ public class BlogPostController {
 			ErrorClazz errorClazz = new ErrorClazz(5, "Unauthorized access....");
 			return new ResponseEntity<ErrorClazz>(errorClazz, HttpStatus.UNAUTHORIZED);
 		}
-		/*String email="imhn18995@gmail.com";*/
 		blogPost.setPostedOn(new Date());
 		blogPost.setPostedBy(userDao.getUser(email));
 		try {
@@ -41,5 +41,17 @@ public class BlogPostController {
 			return new ResponseEntity<ErrorClazz>(errorClazz, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/approvedblogs",method=RequestMethod.GET)
+	public ResponseEntity<?> getApproveBlogs(HttpSession session){
+		String email=(String) session.getAttribute("loggedInUser");
+		if(email==null) {
+			ErrorClazz errorClazz = new ErrorClazz(5, "Unauthorized access....");
+			return new ResponseEntity<ErrorClazz>(errorClazz, HttpStatus.UNAUTHORIZED);
+		}
+		List<BlogPost> approvalBlogs=blogPostDao.getApprovedBlogs();
+		System.out.println("List of blogs "+approvalBlogs);
+		return new ResponseEntity<List<BlogPost>>(approvalBlogs,HttpStatus.OK);
 	}
 }

@@ -1,3 +1,4 @@
+<span style="color:red;">{{error.errorMsg}}</span>
 <b>List of Jobs</b>
 <div class="container">
 	<div class="panel panel-info">
@@ -12,9 +13,11 @@
 							<b>Job Description:</b>{{job.jobDescription}}<br>
 							<b>Salary:</b>{{job.salary}}<br>
 							<b>Location:</b>{{job.location}}<br>
-							<b>Skills Required:</b>{{job.skillsRequired}}<br>
+							<b>Skills Required:</b>{{job.skllsRequired}}<br>
 							<b>Company Name:</b>{{job.companyname}}<br>
 						</div>
+						<a ng-show="user.role=='ADMIN'" href="" style="float: right;" ng-click="deleteJob(job.id)"><span class="glyphicon glyphicon-trash"></span></a>
+						<a ng-show="user.role=='ADMIN'" href="#/updatejob/{{job.id}}" style="float: right;"><span class="glyphicon glyphicon-pencil"></span></a>
 						<hr>
 					</li>
 				</ul>

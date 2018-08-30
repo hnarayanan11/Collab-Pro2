@@ -34,6 +34,7 @@
 <script src="controllers/jobcontroller.js"></script>
 <script src="services/blogpostservice.js"></script>
 <script src="controllers/blogpostcontroller.js"></script>
+
 </head>
 <body ng-app="app">
 	<div class="container">
@@ -61,7 +62,9 @@
 						style="list-style: none;">BlogPost <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="#/addblogpost">Add
-									Blog</a></li>							
+									Blog</a></li>		
+							<li><a href="#/getblogs">Blogs</a></li>				
+							<li ng-show="user.role=='ADMIN'"><a href="#/getallblogposts">Blogs Waiting for Approval</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">

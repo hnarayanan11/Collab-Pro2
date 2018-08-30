@@ -27,6 +27,23 @@ private SessionFactory sessionFactory;
 		List<Job> jobs=query.list();
 		return jobs;
 	}
+	public void deleteJob(int id) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		Job job=(Job) session.get(Job.class, id);
+		session.delete(job);		
+	}
+	public void updateJob(Job job) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();		
+		session.update(job);		
+	}
+	public Job getJob(int id) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		Job job=(Job) session.get(Job.class, id);
+		return job;
+	}
 	
 
 
