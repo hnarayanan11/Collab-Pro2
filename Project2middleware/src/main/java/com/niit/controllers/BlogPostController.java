@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ import com.niit.dao.BlogPostDao;
 import com.niit.dao.UserDao;
 import com.niit.models.BlogPost;
 import com.niit.models.ErrorClazz;
+import com.niit.models.User;
 
 @RestController
 public class BlogPostController {
@@ -53,5 +55,39 @@ public class BlogPostController {
 		List<BlogPost> approvalBlogs=blogPostDao.getApprovedBlogs();
 		System.out.println("List of blogs "+approvalBlogs);
 		return new ResponseEntity<List<BlogPost>>(approvalBlogs,HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/getblog/{id}",method=RequestMethod.GET)
+	public ResponseEntity<?> getBlogs(@PathVariable int id, HttpSession session){
+		System.out.println("Entering into getblog method");
+		String email=(String) session.getAttribute("loggedInUser");
+		if(email==null) {
+			ErrorClazz errorClazz = new ErrorClazz(5, "Unauthorized access....");
+			return new ResponseEntity<ErrorClazz>(errorClazz, HttpStatus.UNAUTHORIZED);
+		}
+		BlogPost blogPost=blogPostDao.getBlogPost(id);
+		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
+		
+	}
+	
+	@RequestMapping(value="/blogwaitforapproval",method=RequestMethod.GET)
+	public ResponseEntity<?> getBlogsWaitingForApproval(HttpSession session){
+		//Authentication
+		String email=(String) session.getAttribute("loggedInUser");
+		if(email==null) {
+			ErrorClazz errorClazz = new ErrorClazz(5, "Unauthorized access....");
+			return new ResponseEntity<ErrorClazz>(errorClazz, HttpStatus.UNAUTHORIZED);
+		}
+		//Authorization - only admin can view list of blogs waiting for approval
+		User user=userDao.getUser(email);
+		System.out.println(user.getRole()=="ADMIN");//memory address are different
+		System.out.println("ADMIN"=="ADMIN");//Same memory address are same
+		System.out.println(user.getRole().equals("ADMIN"));
+		if(!user.getRole().equals("ADMIN")) {
+			ErrorClazz errorClazz=new ErrorClazz(6,"Access Denied....");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		List<BlogPost> blogPostWaitingForApproval=blogPostDao.getBlogWaitingForApproval();
+		return new ResponseEntity<List<BlogPost>>(blogPostWaitingForApproval,HttpStatus.OK);
 	}
 }

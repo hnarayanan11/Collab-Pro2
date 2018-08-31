@@ -5,15 +5,23 @@ app.factory('BlogPostService', function($http) {
 	var blogPostService = {}
 	var BASE_URL = "http://localhost:8085/Project2middleware"
 		
+		
+		//Query - insert into blogpost values(?,,,,) - DAO layer
 		blogPostService.addBlogPost=function(blog){
 		var url=BASE_URL+"/addblogpost"
 		return $http.post(url,blog)
 	}
 
+	//Query - select * from blogpost where approvalstatus=true - in DAO
 	blogPostService.getAllBlogs= function() {
 		var url=BASE_URL+"/approvedblogs"
 		return $http.get(url)
 	}
-
+	
+	blogPostService.getBlog=function(id){
+		var url=BASE_URL+"/getblog/"+id
+		return $http.get(url)
+	}
+	
 	return blogPostService;
 })

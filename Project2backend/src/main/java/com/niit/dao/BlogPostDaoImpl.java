@@ -28,5 +28,18 @@ private SessionFactory sessionFactory;
 		List<BlogPost> blogPosts=query.list();
 		return blogPosts;
 	}
+	public BlogPost getBlogPost(int id) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		BlogPost blogPost=(BlogPost) session.get(BlogPost.class, id);
+		return blogPost;
+	}
+	public List<BlogPost> getBlogWaitingForApproval() {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("from BlogPost where approvalStatus=false");
+		List<BlogPost> blogPosts=query.list();
+		return blogPosts;
+	}
 
 }

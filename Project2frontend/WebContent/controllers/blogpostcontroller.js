@@ -1,7 +1,7 @@
 /**
  * BlogPostCtrl
  */
-app.controller('BlogPostCtrl',function($scope, BlogPostService, $location){
+app.controller('BlogPostCtrl',function($scope, BlogPostService, $location, $rootScope){
 	
 	$scope.addBlogPost=function(blog){
 		BlogPostService.addBlogPost(blog).then(function(Response){
@@ -14,6 +14,7 @@ app.controller('BlogPostCtrl',function($scope, BlogPostService, $location){
 		})
 	}
 	
+	//List of blogs approved
 	function getAllBlogs(){
 		BlogPostService.getAllBlogs().then(function(Response){
 			console.log('Successfully retrieve '+Response.data)
@@ -25,5 +26,18 @@ app.controller('BlogPostCtrl',function($scope, BlogPostService, $location){
 			$scope.error=Response.data
 		})
 	}
+	
+	function getBlogsWaitingForApproval(){
+		/*BlogPostService.getBlogsWaitingForApproval().then(function(resposne){
+			$scope.blogsWaitingForApproval=resoponse.data
+		},function(response){
+			if(Response.status==401)
+				$location.path('/login')
+		})*/
+	}
+	
 	getAllBlogs()
+	//call the funciton only for ADMIN role
+	if($rootScope.user.role=='ADMIN')
+	getBlogsWaitingForApproval()
 })
