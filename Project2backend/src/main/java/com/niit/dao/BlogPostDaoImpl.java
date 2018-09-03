@@ -41,5 +41,17 @@ private SessionFactory sessionFactory;
 		List<BlogPost> blogPosts=query.list();
 		return blogPosts;
 	}
+	public void updateBlogPost(BlogPost blogPost) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		session.update(blogPost);
+		
+	}
+	public void deleteBlogPost(BlogPost blogPost) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		session.delete(blogPost);
+		
+	}
 
 }

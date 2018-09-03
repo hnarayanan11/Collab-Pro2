@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<b>List of Blogs</b>
+<div class="panel panel-info">
+	<div class="panel-heading">Blogs Waiting For approval</div>
+	<div class="pane-body">
+		<ul style="line-style:none;">
+			<li ng-repeat="blogPost in blogsWaitingForApproval">
+			<a href="#/getblogwaitingforapproval/{{blogPost.id}}"><b>Blog Title:</b>{{blogPost.blogTitle}}</a><br>
+			<b>Blog PotedOn:</b>{{blogPost.postedOn | date:'dd:MM;yyyy'}}<br>
+			<b>Blog PostedBy:</b>{{blogPost.postedBy.firstname}} &nbsp; {{blogPost.postedBy.lastname}}<br>
+			</li>			
+		</ul>
+	</div>
+</div>

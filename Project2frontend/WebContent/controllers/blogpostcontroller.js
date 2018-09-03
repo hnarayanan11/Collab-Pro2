@@ -28,16 +28,17 @@ app.controller('BlogPostCtrl',function($scope, BlogPostService, $location, $root
 	}
 	
 	function getBlogsWaitingForApproval(){
-		/*BlogPostService.getBlogsWaitingForApproval().then(function(resposne){
-			$scope.blogsWaitingForApproval=resoponse.data
-		},function(response){
+		BlogPostService.getBlogsWaitingForApproval().then(function(Response){
+			console.log('Successfully entered into getblogpostwaiting '+Response.data)
+			$scope.blogsWaitingForApproval=Response.data
+		},function(Response){
 			if(Response.status==401)
 				$location.path('/login')
-		})*/
+		})
 	}
 	
 	getAllBlogs()
 	//call the funciton only for ADMIN role
 	if($rootScope.user.role=='ADMIN')
-	getBlogsWaitingForApproval()
+		getBlogsWaitingForApproval()
 })

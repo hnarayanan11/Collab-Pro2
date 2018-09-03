@@ -16,4 +16,14 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 			$location.path('/loign')
 		$scope.error=Response.data
 	})
+	
+	$scope.approvedBlogPost=function(blogPost){
+		BlogPostService.approvedBlogPost(blogPost).then(function(Response){
+			$location.path('/getblogswaitingofapproval')
+		},function(Response){
+			if(Response.status==401)
+				$location.path('/loign')
+			$scope.error=Response.data
+		})
+	}
 })

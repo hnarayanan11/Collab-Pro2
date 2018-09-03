@@ -90,4 +90,22 @@ public class BlogPostController {
 		List<BlogPost> blogPostWaitingForApproval=blogPostDao.getBlogWaitingForApproval();
 		return new ResponseEntity<List<BlogPost>>(blogPostWaitingForApproval,HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/approveblogpost",method=RequestMethod.PUT)
+	public ResponseEntity<?> approveBlogpost(@RequestBody BlogPost blogPost, HttpSession session){
+		String email=(String) session.getAttribute("loggedInUser");
+		if(email==null) {
+			ErrorClazz errorClazz = new ErrorClazz(5, "Unauthorized access....");
+			return new ResponseEntity<ErrorClazz>(errorClazz, HttpStatus.UNAUTHORIZED);
+		}
+		User user=userDao.getUser(email);
+		if(!user.getRole().equals("ADMIN")) {
+			ErrorClazz errorClazz=new ErrorClazz(6,"Access Denied....");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		//how to update approvalstatus
+		blogPost.setApprovalStatus(true);
+		blogPostDao.updateBlogPost(blogPost);
+		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
+	}
 }
