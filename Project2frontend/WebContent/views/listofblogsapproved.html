@@ -4,11 +4,15 @@
 <div class="panel panel-info">
 	<div class="panel panel-heding">
 		<div class="panel panel-body">
+		<div ng-if="blogsApproved.length==0">No blog</div>
 			<ul style="list-style:none">
 				<li ng-repeat="blog in blogsApproved">
 					<a href="#/getblog/{{blog.id}}"><b>Blog Title:</b>{{blog.blogTitle}}</a><br>
 					<b>Posted On:</b>{{blog.postedOn | date:'MM:dd:yyyy'}}<br>
 					<b>Posted By:</b>{{blog.postedBy.firstname}} &nbsp; {{blog.postedBy.lastname}}
+					<div ng-show="user.email==blog.postedBy.email"><a href="#/updateblogform/{{blog.id}}" class="btn btn-info  pull-right">Update BlogPost</a></div>
+					{{user.email}} &nbsp; {{blog.postedBy.email}}
+					<hr>
 				</li>
 			</ul>
 		</div>

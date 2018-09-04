@@ -2,11 +2,13 @@
 <div class="panel panel-info">
 	<div class="panel-heading">Blogs Waiting For approval</div>
 	<div class="pane-body">
+	<div ng-if="blogsWaitingForApproval.length==0">No Blogs waiting for approval</div>
 		<ul style="line-style:none;">
 			<li ng-repeat="blogPost in blogsWaitingForApproval">
 			<a href="#/getblogwaitingforapproval/{{blogPost.id}}"><b>Blog Title:</b>{{blogPost.blogTitle}}</a><br>
 			<b>Blog PotedOn:</b>{{blogPost.postedOn | date:'dd:MM;yyyy'}}<br>
 			<b>Blog PostedBy:</b>{{blogPost.postedBy.firstname}} &nbsp; {{blogPost.postedBy.lastname}}<br>
+			<hr>
 			</li>			
 		</ul>
 	</div>

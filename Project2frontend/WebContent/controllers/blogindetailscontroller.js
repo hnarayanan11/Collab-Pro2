@@ -4,6 +4,7 @@
  */
 app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, $routeParams, $sce){
 	var id=$routeParams.id
+	$scope.isRejected=false
 	console.log("Id on request params"+id)
 	
 	//function or statement // select * from bogpost where id=?
@@ -25,5 +26,29 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 				$location.path('/loign')
 			$scope.error=Response.data
 		})
+	}
+	
+	$scope.updateBlogPost=function(blogPost){
+		BlogPostService.updateBlogPost(blogPost).then(function(response){
+			$location.path('/getblogs')
+		},function(response){
+			if(Response.status==401)
+				$location.path('/loign')
+			$scope.error=Response.data
+		})
+	}
+	
+	$scope.rejectBlogPost=function(blogPost){
+		BlogPostService.rejectBlogPost(blogPost,$scope.rejectionReason).then(function(response){
+			console.log(blogPost)
+			$location.path('/getblogswaitingofapproval')
+		},function(response){
+			if(Response.status==401)
+				$location.path('/loign')
+		})
+	}
+	
+	$scope.showTextArea=function(){
+		$scope.isRejected=!$scope.isRejected
 	}
 })

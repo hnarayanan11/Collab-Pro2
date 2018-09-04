@@ -1,9 +1,13 @@
 <span style="color:red;">{{error.errorMsg}}</span>
-<b>Blog Title</b><br>{{blogPost.blogTitle}}<br>
-<b>Posted On:</b><br>{{blogPost.postedOn | date:'dd-MM-yyyy'}}<br>
-<b>Blog Title</b><br>{{blogPost.postedBy.firstname}} &nbsp; {{blogPost.postedBy.lastname}}<br>
-<br>
-{{blogPost.blogCotent}}<br>
-<p ng-bind-html="content"></p>
-Likes:{{blogPost.likes}}<br>
+<div class="panel pane-info">
+	<div class="panel-heading">
+		<b>BLog Title:</b>{{blogPost.blogTitle}}<br> 
+		<b>Posted By:</b>{{blogPost.postedBy.firstname}} &nbsp; {{blogPost.postedBy.lastname}}<br> <b>POsted
+			On:</b>{{blogPost.postedOn | date:'dd:MM:yyyy'}}<br>
+	</div>
+	<div class="panel-body">
+		<p ng-bind-html="content"></p>
+		Likes:{{blogPost.likes}}<br>
 <a href="#/getblogs">Get all blogs</a>
+	</div>	
+</div>

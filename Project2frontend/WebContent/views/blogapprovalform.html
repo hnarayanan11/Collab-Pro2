@@ -8,5 +8,8 @@
 		<p ng-bind-html="content"></p>
 	</div>
 	<div><button class="btn btn-info" ng-click="approvedBlogPost(blogPost)">Approve</button>
-	<button class="btn btn-danger">Reject</button></div>
+	<button class="btn btn-danger" ng-click="showTextArea()">Reject</button></div>
+	<div ng-show="isRejected"><textarea ng-model="rejectionReason" rows="3"></textarea>
+	<button ng-click="rejectBlogPost(blogPost)">Submit</button></div>
+	
 </div>

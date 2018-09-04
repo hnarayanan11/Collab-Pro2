@@ -30,5 +30,14 @@ app.factory('BlogPostService', function($http) {
 	blogPostService.approvedBlogPost=function(blogPost){
 		return $http.put(BASE_URL+"/approveblogpost",blogPost)
 	}
+	
+	blogPostService.updateBlogPost=function(blogPost){
+		return $http.put(BASE_URL+"/updateblogpostuser",blogPost)
+	}
+	
+	blogPostService.rejectBlogPost=function(blogPost,rejectionReason){
+		console.log(blogPost)
+		return $http['put'](BASE_URL+"/rejectblogpost?rejectionReason="+rejectionReason,blogPost)
+	}
 	return blogPostService;
 })
