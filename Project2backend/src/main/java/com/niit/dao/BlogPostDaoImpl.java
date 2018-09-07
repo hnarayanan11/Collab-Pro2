@@ -53,5 +53,11 @@ private SessionFactory sessionFactory;
 		session.delete(blogPost);
 		
 	}
+	public void updateLike(BlogPost blogPost) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		session.update(blogPost);
+		
+	}
 
 }

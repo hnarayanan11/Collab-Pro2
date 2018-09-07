@@ -7,7 +7,7 @@ app.config(function($routeProvider){
 	$routeProvider
 	.when('/registration',{controller:'UserCtrl',templateUrl:'views/registrationform.html'})
 	.when('/login',{controller:'UserCtrl',templateUrl:'views/login.html'})
-	.when('/home',{templateUrl:'views/home.html'})
+	.when('/home',{controller:'HomeCtrl',templateUrl:'views/home.html'})
 	.when('/getalljobs',{controller:'UserCtrl',templateUrl:'views/jobs.html'})
 	.when('/updateprofile',{controller:'UserCtrl',templateUrl:'views/updateprofile.html'})
 	.when('/addjob',{controller:'JobCtrl',templateUrl:'views/jobform.html'})
@@ -20,6 +20,7 @@ app.config(function($routeProvider){
 	.when('/getblogswaitingofapproval',{controller:'BlogPostCtrl',templateUrl:'views/listofblogwaitingforapproval.html'})
 	.when('/getblogwaitingforapproval/:id',{controller:'BlogInDetailsCtrl',templateUrl:'views/blogapprovalform.html'})
 	.when('/updateblogform/:id',{controller:'BlogInDetailsCtrl',templateUrl:'views/updateblogpostform.html'})
+	.when('/getnotification/:id',{controller:'NotificationCtrl',templateUrl:'views/notificationondetails.html'})
 	.otherwise({templateUrl:'views/home.html'})
 })
 // Angular module gets instantiated, app.run() will get executed

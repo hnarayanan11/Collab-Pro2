@@ -8,6 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="resources/template/css/style.css" rel='stylesheet'
 	type='text/css' />
+<link href="resources/css/notification.css" rel='stylesheet'
+	type='text/css' />
 <script src="resources/template/js/jquery-2.2.3.min.js"></script>
 <!-- script for validation -->
 <script src="resources/template/js/jquery.formValid.js"></script>
@@ -35,7 +37,9 @@
 <script src="services/blogpostservice.js"></script>
 <script src="controllers/blogpostcontroller.js"></script>
 <script src="controllers/blogindetailscontroller.js"></script>
-
+<script src="controllers/homecontroller.js"></script>
+<script src="controllers/notificationcontroller.js"></script>
+<script src="services/notificationservice.js"></script>
 </head>
 <body ng-app="app">
 	<div class="container">
@@ -58,15 +62,28 @@
 									Job</a></li>
 							<li><a href="#/getalljobs">View All Jobs</a></li>
 						</ul></li>
-						<li ng-show="user.email!=undefined" class="dropdown"><a
+					<li ng-show="user.email!=undefined" class="dropdown"><a
 						class="dropdown-toggle" data-toggle="dropdown" href="#"
 						style="list-style: none;">BlogPost <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#/addblogpost">Add
-									Blog</a></li>		
-							<li><a href="#/getblogs">Blogs</a></li>				
-							<li ng-show="user.role=='ADMIN'"><a href="#/getblogswaitingofapproval">Blogs Waiting for Approval</a></li>
+							<li><a href="#/addblogpost">Add Blog</a></li>
+							<li><a href="#/getblogs">Blogs</a></li>
+							<li ng-show="user.role=='ADMIN'"><a
+								href="#/getblogswaitingofapproval">Blogs Waiting for
+									Approval</a></li>
 						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+						ng-show="user.email"> <span class="glyphicon glyphicon-globe"></span>
+								<span class="rw-number-notification" ng-if="notificationCount>0">{{notificationCount}}</span>
+								<ul class="dropdown-menu">
+									<span class="dropdown-content">
+										<li ng-repeat="notification in notifications">
+										<a href="#/getnotification/{{notification.id}}">BlogPostTitled<b>{{notification.blogPost}}</b>
+												approved status is udpated
+										</a>
+											<hr></li></span>
+								</ul>
+						</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li ng-show="user.email==undefined"><a href="#/registration"><span

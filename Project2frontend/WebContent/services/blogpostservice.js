@@ -39,5 +39,17 @@ app.factory('BlogPostService', function($http) {
 		console.log(blogPost)
 		return $http['put'](BASE_URL+"/rejectblogpost?rejectionReason="+rejectionReason,blogPost)
 	}
+	
+	blogPostService.getNotificationNotViewed=function(){
+		return $http.get(BASE_URL+'/notifications')
+	}
+	
+	blogPostService.incLike=function(blogPost){
+		return $http.put(BASE_URL+'/inclike',blogPost)
+	}
+	
+	blogPostService.dcrLike=function(blogPost){
+		return $http.put(BASE_URL+'/dcrlike',blogPost)
+	}
 	return blogPostService;
 })

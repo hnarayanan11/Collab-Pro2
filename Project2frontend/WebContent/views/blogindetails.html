@@ -7,7 +7,9 @@
 	</div>
 	<div class="panel-body">
 		<p ng-bind-html="content"></p>
-		Likes:{{blogPost.likes}}<br>
+		Likes:{{blogPost.likes}} &nbsp; DisLikes:{{blogPost.dislikes}}<br>
+		<a href="" ng-click="incLike(blogPost)"><span class="glyphicon glyphicon-thumbs-up" title="Like"></span></a>
+		<a href="" ng-click="dcrLike(blogPost)"><span class="glyphicon glyphicon-thumbs-down" title="DisLike"></span></a><br>
 <a href="#/getblogs">Get all blogs</a>
 	</div>	
 </div>

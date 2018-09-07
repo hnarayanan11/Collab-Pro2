@@ -48,6 +48,24 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 		})
 	}
 	
+	$scope.incLike=function(blogPost){
+		BlogPostService.incLike(blogPost).then(function(Response){
+			$location.path('/getblogs')
+		},function(Response){
+			if(Response.status==401)
+				$location.path('/loign')
+		})
+	}
+	
+	$scope.dcrLike=function(blogPost){
+		BlogPostService.dcrLike(blogPost).then(function(Response){
+			$location.path('/getblogs')
+		},function(Response){
+			if(Response.status==401)
+				$location.path('/loign')
+		})
+	}
+	
 	$scope.showTextArea=function(){
 		$scope.isRejected=!$scope.isRejected
 	}

@@ -110,7 +110,8 @@ public class BlogPostController {
 		}
 		//how to update approvalstatus
 		blogPost.setApprovalStatus(true);
-		blogPostDao.updateBlogPost(blogPost);Notification notification=new Notification();
+		blogPostDao.updateBlogPost(blogPost);
+		Notification notification=new Notification();
 		notification.setApprovalStatus("Approved");
 		notification.setBlogPost(blogPost.getBlogTitle());
 		notification.setEmail(blogPost.getPostedBy().getEmail());
@@ -151,5 +152,29 @@ public class BlogPostController {
 		notificationDao.addNotification(notification);
 		blogPostDao.deleteBlogPost(blogPost);
 		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/inclike",method=RequestMethod.PUT)
+	public ResponseEntity<?> incLike(@RequestBody BlogPost blogPost, HttpSession session){
+		String email=(String) session.getAttribute("loggedInUser");
+		if(email==null) {
+			ErrorClazz errorClazz = new ErrorClazz(5, "Unauthorized access....");
+			return new ResponseEntity<ErrorClazz>(errorClazz, HttpStatus.UNAUTHORIZED);
+		}
+		blogPost.setLikes(blogPost.getLikes()+1);
+		blogPostDao.updateLike(blogPost);		
+		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/dcrlike",method=RequestMethod.PUT)
+	public ResponseEntity<?> dcrLike(@RequestBody BlogPost blogPost, HttpSession session){
+		String email=(String) session.getAttribute("loggedInUser");
+		if(email==null) {
+			ErrorClazz errorClazz = new ErrorClazz(5, "Unauthorized access....");
+			return new ResponseEntity<ErrorClazz>(errorClazz, HttpStatus.UNAUTHORIZED);
+		}
+		blogPost.setDislikes(blogPost.getDislikes()+1);
+		blogPostDao.updateLike(blogPost);		
+		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 	}
 }
