@@ -42,4 +42,15 @@ public class NotificationController {
 		Notification notification=notificationDao.getNotificaiton(id);
 		return new ResponseEntity<Notification>(notification,HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/updatenotificaiton/{id}",method=RequestMethod.PUT)
+	public ResponseEntity<?> UpdateNotification(@PathVariable int id, HttpSession session){
+		String email = (String) session.getAttribute("loggedInUser");
+		if (email == null) {
+			ErrorClazz errorClazz = new ErrorClazz(5, "Unauthorized access....");
+			return new ResponseEntity<ErrorClazz>(errorClazz, HttpStatus.UNAUTHORIZED);
+		}
+		notificationDao.updateNotification(id);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
 }

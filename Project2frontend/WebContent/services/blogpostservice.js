@@ -51,5 +51,16 @@ app.factory('BlogPostService', function($http) {
 	blogPostService.dcrLike=function(blogPost){
 		return $http.put(BASE_URL+'/dcrlike',blogPost)
 	}
+	
+	blogPostService.addBlogComment=function(blogPost,commentTxt){
+		console.log(BASE_URL+'/addblogcomment',blogPost)
+		return $http.post(BASE_URL+'/addblogcomment?commentTxt='+commentTxt,blogPost);
+	}
+	
+	blogPostService.getBlogComments=function(id){
+		console.log(id)
+		console.log(BASE_URL+'/getblogcomment/'+id)
+		return $http.get(BASE_URL+'/getblogcomment/'+id)
+	}
 	return blogPostService;
 })

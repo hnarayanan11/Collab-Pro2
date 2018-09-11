@@ -66,6 +66,29 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 		})
 	}
 	
+	$scope.addBlogComment=function(blogPost,commentTxt){
+		if(commentTxt==undefined || commentTxt=="")
+			$scope.error='please enter some comment...'
+			else
+		BlogPostService.addBlogComment(blogPost,commentTxt).then(function(response){
+			$scope.commentTxt=''
+			$scope.error=""
+			$scope.blogComment=response.data
+		},function(response){			
+			if(Response.status==401)
+				$location.path('/loign')
+		})
+	}
+	
+	$scope.getBlogComments=function(id){
+		console.log(id)
+		BlogPostService.getBlogComments(id).then(function(response){
+			$scope.blogComments=response.data//result of query(select * from blogcomment where blogpostid=id)
+		},function(response){
+			if(Response.status==401)
+				$location.path('/loign')
+		})
+	}
 	$scope.showTextArea=function(){
 		$scope.isRejected=!$scope.isRejected
 	}

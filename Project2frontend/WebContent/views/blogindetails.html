@@ -10,6 +10,30 @@
 		Likes:{{blogPost.likes}} &nbsp; DisLikes:{{blogPost.dislikes}}<br>
 		<a href="" ng-click="incLike(blogPost)"><span class="glyphicon glyphicon-thumbs-up" title="Like"></span></a>
 		<a href="" ng-click="dcrLike(blogPost)"><span class="glyphicon glyphicon-thumbs-down" title="DisLike"></span></a><br>
-<a href="#/getblogs">Get all blogs</a>
+
+<br>
+<b>Comments</b>
+<textarea rows="3" cols="30" ng-model="commentTxt" name="commentTxt" required>
+
+</textarea><span style="color:red;">{{error}}</span>
+<br><button class="btn btn-info" ng-click="addBlogComment(blogPost,commentTxt)">Post Comment</button>
+<br>
+<div ng-hide="blogComment.commentTxt==undefined">
+<b>{{blogComment.commentTxt}}, &nbsp; By:-You{{blogComment.commentedBy.email}}, &nbsp; commentedOn:{{blogComment.commentedOn | date:'dd:MM:yyyy'}}</b>
+</div>
+
+<br><a href="" ng-click="getBlogComments(blogPost.id)">View All Comments</a><br>
+<ul style="list-style:none">
+<li ng-repeat="blogComment in blogComments | orderBy:'-commentedOn'">
+<b>{{blogComment.commentTxt}}</b>
+<b>commentedBy -
+<span ng-if="user.email!=blogComment.commentedBy.email">{{blogComment.comentedBy.email}},</span>
+<span ng-if="user.email==blogComment.commentedBy.email">You</span>
+  , commentedOn - {{blogComment.commentedOn | date:'yyyy:MM:dd:mm:ss'}}</b>
+</li>
+</ul>
+
+<br><a href="#/getblogs">Get all blogs</a>
+
 	</div>	
 </div>
