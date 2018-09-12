@@ -40,6 +40,8 @@
 <script src="controllers/homecontroller.js"></script>
 <script src="controllers/notificationcontroller.js"></script>
 <script src="services/notificationservice.js"></script>
+<script src="controllers/friendcontroller.js"></script>
+<script src="services/friendservice.js"></script>
 </head>
 <body ng-app="app">
 	<div class="container">
@@ -86,6 +88,9 @@
 						</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown" ng-show="user.email!=undefined"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Friend <span class="caret"></span></a>
+				<ul class="dropdown-menu"><li> <a href="#/suggestedusers">Suggested Users</a></li></ul>								
+				</li>
 					<li ng-show="user.email==undefined"><a href="#/registration"><span
 							class="glyphicon glyphicon-user"></span> Registration</a></li>
 					<li ng-show="user.email==undefined"><a href="#/login"><span

@@ -21,6 +21,7 @@ app.config(function($routeProvider){
 	.when('/getblogwaitingforapproval/:id',{controller:'BlogInDetailsCtrl',templateUrl:'views/blogapprovalform.html'})
 	.when('/updateblogform/:id',{controller:'BlogInDetailsCtrl',templateUrl:'views/updateblogpostform.html'})
 	.when('/getnotification/:id',{controller:'NotificationCtrl',templateUrl:'views/notificationondetails.html'})
+	.when('/suggestedusers',{controller:'FriendCtrl',templateUrl:'views/suggestedusers.html'})
 	.otherwise({templateUrl:'views/home.html'})
 })
 // Angular module gets instantiated, app.run() will get executed
