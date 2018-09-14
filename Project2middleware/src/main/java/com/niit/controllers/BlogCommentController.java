@@ -58,5 +58,17 @@ public class BlogCommentController {
 		List<BlogComment> comments=blogCommentDao.getBlogComment(blogPostId);
 		return new ResponseEntity<List<BlogComment>>(comments,HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/deleteblogcomment",method=RequestMethod.PUT)
+	public ResponseEntity<?> deleteBlogComment(@RequestBody BlogComment blogComment, HttpSession session){
+		String email = (String) session.getAttribute("loggedInUser"); // Check for
+		// Authentication
+		if (email == null) {
+			ErrorClazz errorClazz = new ErrorClazz(4, "Unauthorized access.. please login.....");
+			return new ResponseEntity<ErrorClazz>(errorClazz, HttpStatus.UNAUTHORIZED);
+		}
+		blogCommentDao.deleteBlogComment(blogComment);
+		return new ResponseEntity<BlogComment>(blogComment,HttpStatus.OK);
+	}
 
 }

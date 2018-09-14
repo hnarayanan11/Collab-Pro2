@@ -22,15 +22,18 @@
 <b>{{blogComment.commentTxt}}, &nbsp; By:-You{{blogComment.commentedBy.email}}, &nbsp; commentedOn:{{blogComment.commentedOn | date:'dd:MM:yyyy'}}</b>
 </div>
 
-<br><a href="" ng-click="getBlogComments(blogPost.id)">View All Comments</a><br>
-<ul style="list-style:none">
+<br><a href="" ng-click="getBlogComments(blogPost.id)">View All Comments</a> &nbsp; <span style="color:purple;">{{msg}}</span><br>
+<ul style="list-style:none"><span style="float:center;" ng-show="blogComments==''">There is no comments, you are the first one to comment is blog!</span>
 <li ng-repeat="blogComment in blogComments | orderBy:'-commentedOn'">
 <b>{{blogComment.commentTxt}}</b>
 <b>commentedBy -
-<span ng-if="user.email!=blogComment.commentedBy.email">{{blogComment.comentedBy.email}},</span>
+<span ng-if="user.email!=blogComment.commentedBy.email">{{blogComment.commentedBy.email}},</span>
 <span ng-if="user.email==blogComment.commentedBy.email">You</span>
   , commentedOn - {{blogComment.commentedOn | date:'yyyy:MM:dd:mm:ss'}}</b>
-</li>
+  
+  <a href="" ng-click="deleteBlogComment(blogComment)"><span ng-show="user.email==blogComment.commentedBy.email" class="pull-right glyphicon glyphicon-trash" title="Delete This Comment"></span></a> 
+  <hr>
+</l i>
 </ul>
 
 <br><a href="#/getblogs">Get all blogs</a>

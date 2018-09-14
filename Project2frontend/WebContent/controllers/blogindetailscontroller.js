@@ -66,6 +66,16 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 		})
 	}
 	
+	function getBlogComments(id){
+		console.log(id)
+		BlogPostService.getBlogComments(id).then(function(response){
+			$scope.blogComments=response.data//result of query(select * from blogcomment where blogpostid=id)
+		},function(response){
+			if(Response.status==401)
+				$location.path('/loign')
+		})
+	}
+	
 	$scope.addBlogComment=function(blogPost,commentTxt){
 		if(commentTxt==undefined || commentTxt=="")
 			$scope.error='please enter some comment...'
@@ -74,6 +84,7 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 			$scope.commentTxt=''
 			$scope.error=""
 			$scope.blogComment=response.data
+			getBlogComments(id);
 		},function(response){			
 			if(Response.status==401)
 				$location.path('/loign')
@@ -89,6 +100,20 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 				$location.path('/loign')
 		})
 	}
+	
+	$scope.deleteBlogComment=function(blogComment){
+		console.log(blogComment)
+		BlogPostService.deleteBlogComment(blogComment).then(function(response){
+			console.log('succcessfully deleted',response.data)
+			$scope.msg="Comment deleted successfully!";
+			$scope.blogComment=undefined
+			getBlogComments(blogComment.blogPost.id);
+		},function(response){
+			if(Response.status==401)
+				$location.path('/loign')
+		})
+	}
+	
 	$scope.showTextArea=function(){
 		$scope.isRejected=!$scope.isRejected
 	}

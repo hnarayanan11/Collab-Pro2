@@ -8,5 +8,9 @@ app.factory('FriendService',function($http){
 		console.log('getsuggestedusers')
 		return $http.get(BASE_URL+'/suggestedusers')
 	}
+	
+	friendService.sendFriendRequest=function(toId){
+		return $http.post(BASE_URL+'/friendrequest',toId)
+	}
 	return friendService
 })

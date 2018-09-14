@@ -32,4 +32,10 @@ public class BlogCommentDaoImpl implements BlogCommentDao {
 		return blogComments;
 	}
 
+	public void deleteBlogComment(BlogComment blogComment) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();		
+		session.delete(blogComment);		
+	}
+
 }

@@ -62,5 +62,11 @@ app.factory('BlogPostService', function($http) {
 		console.log(BASE_URL+'/getblogcomment/'+id)
 		return $http.get(BASE_URL+'/getblogcomment/'+id)
 	}
+	
+	blogPostService.deleteBlogComment=function(blogComment){
+		console.log('deleteblogcomment')
+		return $http.put(BASE_URL+'/deleteblogcomment',blogComment)
+	}
+	
 	return blogPostService;
 })
