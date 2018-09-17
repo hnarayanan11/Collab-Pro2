@@ -60,7 +60,33 @@ public class FriendController {
 			ErrorClazz errorClazz=new ErrorClazz(4,"Uauthorized access.. please login.....");
 			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
 		}
-		List<User> pendingRequests=friendDao.getPendingRequests(email);
-		return new ResponseEntity<List<User>>(pendingRequests,HttpStatus.OK);
+		List<Friend> pendingRequests=friendDao.getPendingRequests(email);
+		System.out.println("pending request "+pendingRequests);
+		return new ResponseEntity<List<Friend>>(pendingRequests,HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/acceptfriendrequest",method=RequestMethod.PUT)
+	public ResponseEntity<?> acceptFriendRequest(@RequestBody Friend friend, HttpSession session){
+		System.out.println("Friend Id is "+friend.getId());
+		String email=(String)session.getAttribute("loggedInUser");
+		if(email==null) {
+			ErrorClazz errorClazz=new ErrorClazz(4,"Uauthorized access.. please login.....");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		friend.setStatus('A');
+		friendDao.acceptFriendRequest(friend);
+		return new ResponseEntity<Friend>(friend,HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/deletefriendrequest",method=RequestMethod.PUT)
+	public ResponseEntity<?> deleteFriendRequest(@RequestBody Friend friend,HttpSession session){
+		System.out.println("Friend Id is "+friend.getId());
+		String email=(String)session.getAttribute("loggedInUser");
+		if(email==null) {
+			ErrorClazz errorClazz=new ErrorClazz(4,"Uauthorized access.. please login.....");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		friendDao.deleteFriendRequest(friend);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 }

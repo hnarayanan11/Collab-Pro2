@@ -12,5 +12,18 @@ app.factory('FriendService',function($http){
 	friendService.sendFriendRequest=function(toId){
 		return $http.post(BASE_URL+'/friendrequest',toId)
 	}
+	
+	friendService.getPendingRequests=function(){
+		return $http.get(BASE_URL+'/pendingrequests')
+	}
+	
+	friendService.acceptRequest=function(pendingRequest){
+		return $http.put(BASE_URL+'/acceptfriendrequest',pendingRequest)
+	}
+	
+	friendService.deleteRequest=function(pendingRequest){
+		return $http.put(BASE_URL+'/deletefriendrequest',pendingRequest)
+	}
+	
 	return friendService
 })

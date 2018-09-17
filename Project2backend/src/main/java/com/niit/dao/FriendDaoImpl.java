@@ -36,17 +36,31 @@ public class FriendDaoImpl implements FriendDao{
 
 	public void addFriendRequest(Friend friend) {
 		// TODO Auto-generated method stub
+		System.out.println("Friend Id is "+friend.getId());
 		Session session=sessionFactory.getCurrentSession();
 		session.save(friend);
 	}
 
-	public List<User> getPendingRequests(String email) {
+	public List<Friend> getPendingRequests(String email) {
+		// TODO Auto-generated method stub		
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("From Friend f where f.toId.email=? and f.status='P'");
+		query.setString(0, email);
+		List<Friend> pendingRequest=query.list();
+		return pendingRequest;
+	}
+
+	public void acceptFriendRequest(Friend friend) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.getCurrentSession();
-		Query query=session.createQuery("select f.fromId from Friend F where f.toId.email=? and f.status='P'");
-		query.setString(0, email);
-		List<User> pendingRequest=query.list();
-		return pendingRequest;
+		session.update(friend);		
+	}
+
+	public void deleteFriendRequest(Friend friend) {
+		// TODO Auto-generated method stub
+		System.out.println("Friend Id is "+friend.getId());
+		Session session=sessionFactory.getCurrentSession();
+		session.delete(friend);
 	}	
 
 }

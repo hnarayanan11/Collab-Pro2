@@ -78,8 +78,8 @@
 						ng-show="user.email"> <span class="glyphicon glyphicon-globe"></span>
 								<span class="rw-number-notification" ng-if="notificationCount>0">{{notificationCount}}</span></a>
 								<ul class="dropdown-menu">
-									<span >
-										<li class="dropdown-content" ng-repeat="notification in notifications">
+									<span class="dropdown-content"">
+										<li ng-repeat="notification in notifications">
 										<a href="#/getnotification/{{notification.id}}">BlogPostTitled<b>{{notification.blogPost}}</b>
 												approved status is udpated
 										</a>
@@ -90,7 +90,7 @@
 				<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown" ng-show="user.email!=undefined"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Friends <span class="caret"></span></a>
 				<ul class="dropdown-menu"><li> <a href="#/suggestedusers">Suggested Users</a></li>
-				<li><a href="#/pendingrequest">Pending Request</a></li>
+				<li><a href="#/pendingrequests">Pending Request</a></li>
 				</ul>								
 				</li>
 					<li ng-show="user.email==undefined"><a href="#/registration"><span

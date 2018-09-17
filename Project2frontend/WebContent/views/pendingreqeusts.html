@@ -1,0 +1,18 @@
+<div ckass="panel panel-info">
+<div class="panel-heading">
+Pending Requests
+</div>
+<div class="panel-body">
+<ul style="list-style:none;">
+<li ng-repeat="pendingRequest in pendingRequests">
+<!-- Type of pendingRequests User -->
+<a href="" ng-click="detailsViewed(pendingRequest.fromId.email)">{{pendingRequest.fromId.email}}<br></a>
+{{pendingRequest.fromId.firstname}} &nbsp; {{pendingRequest.fromId.lastname}}<br>
+<div ng-show="viewed">{{pendingRequest.fromId.role}}<br>
+{{pendingRequest.fromId.phonenumber}}<br></div>
+<button class="btn btn-info pull-right" ng-click="acceptRequest(pendingRequest)">Accept</button><button class="btn btn-danger pull-right" ng-click="deleteRequest(pendingRequest)">Delete</button>
+<!-- in dao - update frind set status='a' where id=>  --><!-- in dao - delete from friend where id=? -->
+<hr>
+</ul>
+</div>
+</div>
