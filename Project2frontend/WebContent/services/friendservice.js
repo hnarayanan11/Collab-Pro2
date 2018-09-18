@@ -25,5 +25,9 @@ app.factory('FriendService',function($http){
 		return $http.put(BASE_URL+'/deletefriendrequest',pendingRequest)
 	}
 	
+	friendService.listOfFriends=function(){
+		return $http.get(BASE_URL+'/listoffriends');
+	}
+	
 	return friendService
 })

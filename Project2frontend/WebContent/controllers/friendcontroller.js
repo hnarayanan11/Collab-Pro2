@@ -39,7 +39,7 @@ app.controller('FriendCtrl',function($scope, $location, FriendService){
 	
 	$scope.acceptRequest=function(pendingRequest){//pending request contains a friend object
 		FriendService.acceptRequest(pendingRequest).then(function(response){
-			getPendingRequests()
+			getPendingRequests()// pendingRequest.html [accept] -> friendslist.html
 		},function(response){
 			if(response.status==401)
 				$location.path('/login')
@@ -58,6 +58,14 @@ app.controller('FriendCtrl',function($scope, $location, FriendService){
 	$scope.detailsViewed=function(id){
 		$scope.viewed=!($scope.viewed)
 	}
+	
+	FriendService.listOfFriends().then(function(response){
+		console.log(response.data)
+		$scope.friendsDetatils=response.data//List<User> [toId and fromId]
+	},function(response){
+		if(response.status==401)
+			$location.path('/login')
+	})
 	
 	getSuggestedUsers();
 	getPendingRequests();

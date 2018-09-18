@@ -89,4 +89,15 @@ public class FriendController {
 		friendDao.deleteFriendRequest(friend);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/listoffriends",method=RequestMethod.GET)
+	public ResponseEntity<?> listOfFriends(HttpSession session){
+		String email=(String)session.getAttribute("loggedInUser");
+		if(email==null) {
+			ErrorClazz errorClazz=new ErrorClazz(4,"Uauthorized access.. please login.....");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		List<User> friendsDetails=friendDao.listOfFriends(email);
+		return new ResponseEntity<List<User>>(friendsDetails,HttpStatus.OK);
+	}
 }

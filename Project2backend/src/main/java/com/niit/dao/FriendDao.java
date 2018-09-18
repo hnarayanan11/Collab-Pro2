@@ -11,4 +11,5 @@ public interface FriendDao {
 	List<Friend> getPendingRequests(String email);
 	void acceptFriendRequest(Friend friend);
 	void deleteFriendRequest(Friend friend);
+	List<User> listOfFriends(String email);
 }
