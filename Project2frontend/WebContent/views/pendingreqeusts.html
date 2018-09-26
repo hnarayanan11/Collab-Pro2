@@ -4,7 +4,9 @@ Pending Requests
 </div>
 <div class="panel-body">
 <ul style="list-style:none;">
+<li ng-show="pendingRequests==undefined || pendingRequests==null">No Pending Request</li>
 <li ng-repeat="pendingRequest in pendingRequests">
+<img src="http://localhost:8085/Project2middleware/getimage?email={{pendingRequest.fromId.email}}" alt="No Image" height="40px" width="40px"><br>
 <!-- Type of pendingRequests User -->
 <a href="" ng-click="detailsViewed(pendingRequest.fromId.email)">{{pendingRequest.fromId.email}}<br></a>
 {{pendingRequest.fromId.firstname}} &nbsp; {{pendingRequest.fromId.lastname}}<br>

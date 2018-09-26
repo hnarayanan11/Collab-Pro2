@@ -4,6 +4,7 @@
 		<b>BLog Title:</b>{{blogPost.blogTitle}}<br> 
 		<b>Posted By:</b>{{blogPost.postedBy.firstname}} &nbsp; {{blogPost.postedBy.lastname}}<br> <b>POsted
 			On:</b>{{blogPost.postedOn | date:'dd:MM:yyyy'}}<br>
+			<img src="http://localhost:8085/Project2middleware/getimage?email={{blogPost.postedBy.email}}" alt="No Image" height="50px" width="50px"><br>
 	</div>
 	<div class="panel-body">
 		<p ng-bind-html="content"></p>

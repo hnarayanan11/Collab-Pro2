@@ -10,6 +10,7 @@
 					<a href="#/getblog/{{blog.id}}"><b>Blog Title:</b>{{blog.blogTitle}}</a><br>
 					<b>Posted On:</b>{{blog.postedOn | date:'MM:dd:yyyy'}}<br>
 					<b>Posted By:</b>{{blog.postedBy.firstname}} &nbsp; {{blog.postedBy.lastname}}
+					<img src="http://localhost:8085/Project2middleware/getimage?email={{blog.postedBy.email}}" alt="No Image" height="50px" width="50px">
 					<div ng-show="user.email==blog.postedBy.email"><a href="#/updateblogform/{{blog.id}}" class="btn btn-info  pull-right">Update BlogPost</a></div>
 					{{user.email}} &nbsp; {{blog.postedBy.email}}
 					<hr>

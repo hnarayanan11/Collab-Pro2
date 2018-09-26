@@ -5,6 +5,7 @@ Friends
 <div class="panel-body">
 <ul style="list-style:none;">
 <li ng-repeat="firendDetail in friendsDetatils"><!-- Type of friendDetails is User -->
+<img src="http://localhost:8085/Project2middleware/getimage?email={{firendDetail.email}}" alt="No Image" height="40px" width="40px"><br>
 {{firendDetail.email}}<br>
 {{firendDetail.firstname}} &nbsp; {{firendDetail.lastname}}<br>
 {{firendDetail.phonenumber}}<br>

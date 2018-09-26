@@ -14,7 +14,7 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 		$scope.content=$sce.trustAsHtml($scope.blogPost.blogContent)
 	},function(Response){
 		if(Response.status==401)
-			$location.path('/loign')
+			$location.path('/login')
 		$scope.error=Response.data
 	})
 	
@@ -23,7 +23,7 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 			$location.path('/getblogswaitingofapproval')
 		},function(Response){
 			if(Response.status==401)
-				$location.path('/loign')
+				$location.path('/login')
 			$scope.error=Response.data
 		})
 	}
@@ -33,7 +33,7 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 			$location.path('/getblogs')
 		},function(response){
 			if(Response.status==401)
-				$location.path('/loign')
+				$location.path('/login')
 			$scope.error=Response.data
 		})
 	}
@@ -44,7 +44,7 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 			$location.path('/getblogswaitingofapproval')
 		},function(response){
 			if(Response.status==401)
-				$location.path('/loign')
+				$location.path('/login')
 		})
 	}
 	
@@ -53,7 +53,7 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 			$location.path('/getblogs')
 		},function(Response){
 			if(Response.status==401)
-				$location.path('/loign')
+				$location.path('/login')
 		})
 	}
 	
@@ -62,7 +62,7 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 			$location.path('/getblogs')
 		},function(Response){
 			if(Response.status==401)
-				$location.path('/loign')
+				$location.path('/login')
 		})
 	}
 	
@@ -72,7 +72,7 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 			$scope.blogComments=response.data//result of query(select * from blogcomment where blogpostid=id)
 		},function(response){
 			if(Response.status==401)
-				$location.path('/loign')
+				$location.path('/login')
 		})
 	}
 	
@@ -87,7 +87,7 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 			getBlogComments(id);
 		},function(response){			
 			if(Response.status==401)
-				$location.path('/loign')
+				$location.path('/login')
 		})
 	}
 	
@@ -97,7 +97,7 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 			$scope.blogComments=response.data//result of query(select * from blogcomment where blogpostid=id)
 		},function(response){
 			if(Response.status==401)
-				$location.path('/loign')
+				$location.path('/login')
 		})
 	}
 	
@@ -110,7 +110,7 @@ app.controller('BlogInDetailsCtrl',function($scope, BlogPostService, $location, 
 			getBlogComments(blogComment.blogPost.id);
 		},function(response){
 			if(Response.status==401)
-				$location.path('/loign')
+				$location.path('/login')
 		})
 	}
 	

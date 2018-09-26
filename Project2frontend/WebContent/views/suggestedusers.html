@@ -1,6 +1,7 @@
 <b>Suggested Friends</b>
 <ul style="list-style:none;">
 <li ng-repeat="user in suggestedUsers">
+<img src="http://localhost:8085/Project2middleware/getimage?email={{user.email}}" alt="No Image" height="40px" width="40px"><br>
 {{user.firstname}} &nbsp; {{user.lastname}}<br>
 {{user.email}}<br>
 {{user.role}}<br>
