@@ -25,6 +25,7 @@ app.config(function($routeProvider){
 	.when('/pendingrequests',{controller:'FriendCtrl',templateUrl:'views/pendingreqeusts.html'})
 	.when('/listoffriends',{controller:'FriendCtrl',templateUrl:'views/friendslist.html'})
 	.when('/uploadprofilepic',{templateUrl:'views/uploadpicture.html'})
+	.when('/chat',{templateUrl:'views/chat.html',controller:'ChatCtrl'})
 	.otherwise({templateUrl:'views/home.html'})
 })
 // Angular module gets instantiated, app.run() will get executed

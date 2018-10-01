@@ -29,6 +29,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+
+
+<script type="text/javascript" src="js/sockjs/sockjs.min.js"></script>
+<script type="text/javascript" src="js/stomp/dist/stomp.min.js"></script>
 <script src="js/app.js"></script>
 <script src="controllers/usercontroller.js"></script>
 <script src="services/userservice.js"></script>
@@ -42,6 +46,8 @@
 <script src="services/notificationservice.js"></script>
 <script src="controllers/friendcontroller.js"></script>
 <script src="services/friendservice.js"></script>
+<script type="text/javascript" src="services/chatservice.js"></script>
+<script type="text/javascript" src="controllers/chatcontroller.js"></script>
 </head>
 <body ng-app="app">
 	<div class="container">
@@ -55,7 +61,10 @@
 					<li><a href="#/home">Home</a></li>
 					<li ng-show="user.email!=undefined"><a href="#/updateprofile">Welcome
 							{{user.firstname}} &nbsp; {{user.lastname}}</a></li>
-					<li ng-show="user.email!=undefined"><a href="#/uploadprofilepic"><img src="http://localhost:8085/Project2middleware/getimage?email={{user.email}}" alt="No Profile Pic" height="40px" width="40px"></a></li>
+					<li ng-show="user.email!=undefined"><a
+						href="#/uploadprofilepic"><img
+							src="http://localhost:8085/Project2middleware/getimage?email={{user.email}}"
+							alt="No Profile Pic" height="40px" width="40px"></a></li>
 
 					<li ng-show="user.email!=undefined" class="dropdown"><a
 						class="dropdown-toggle" data-toggle="dropdown" href="#"
@@ -74,27 +83,32 @@
 							<li ng-show="user.role=='ADMIN'"><a
 								href="#/getblogswaitingofapproval">Blogs Waiting for
 									Approval</a></li>
-						</ul></li>						
-					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-						ng-show="user.email"> <span class="glyphicon glyphicon-globe"></span>
-								<span class="rw-number-notification" ng-if="notificationCount>0">{{notificationCount}}</span></a>
-								<ul class="dropdown-menu">
-									<span class="dropdown-content"">
-										<li ng-repeat="notification in notifications">
-										<a href="#/getnotification/{{notification.id}}">BlogPostTitled<b>{{notification.blogPost}}</b>
-												approved status is udpated
-										</a>
-											<hr></li></span>
-								</ul>								
-						</li>						
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" ng-show="user.email"> <span
+							class="glyphicon glyphicon-globe"></span> <span
+							class="rw-number-notification" ng-if="notificationCount>0">{{notificationCount}}</span></a>
+						<ul class="dropdown-menu">
+							<span class="dropdown-content"">
+								<li ng-repeat="notification in notifications"><a
+									href="#/getnotification/{{notification.id}}">BlogPostTitled<b>{{notification.blogPost}}</b>
+										approved status is udpated
+								</a>
+									<hr></li>
+							</span>
+						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown" ng-show="user.email!=undefined"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Friends <span class="caret"></span></a>
-				<ul class="dropdown-menu"><li> <a href="#/suggestedusers">Suggested Users</a></li>
-				<li><a href="#/pendingrequests">Pending Request</a></li>
-				<li><a href="#/listoffriends">Friend</a></li>
-				</ul>								
-				</li>
+					<li class="dropdown" ng-show="user.email!=undefined"><a
+						href="#" class="dropdown-toggle" data-toggle="dropdown">Friends
+							<span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="#/suggestedusers">Suggested Users</a></li>
+							<li><a href="#/pendingrequests">Pending Request</a></li>
+							<li><a href="#/listoffriends">Friend</a></li>
+						</ul></li>
+					<li><a href="#/chat" ng-show="user.firstname">chat </a></li>
 					<li ng-show="user.email==undefined"><a href="#/registration"><span
 							class="glyphicon glyphicon-user"></span> Registration</a></li>
 					<li ng-show="user.email==undefined"><a href="#/login"><span
